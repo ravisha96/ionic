@@ -1,0 +1,146 @@
+[
+
+  {
+  	"id": 3,
+    "name":"Khan Market",
+    "coords": {
+      "latitude": 28.599768,
+      "longitude": 77.226369
+    }
+  },
+  {
+  	"id": 4,
+    "name":"Public Toilet - Lajpat Nagar",
+    "coords": {
+      "latitude": 28.579472,
+      "longitude": 77.241919
+    }
+  },
+  {
+  	"id": 5,
+    "name":"Lajpat Nagar Toilet\nBanphul Marg",
+    "coords": {
+      "latitude": 28.575722,
+      "longitude": 77.243207
+    }
+  },
+  {
+  	"id": 6,
+    "name":"Lajpat nagar vaishavi devi",
+    "coords": {
+      "latitude": 28.572726,
+      "longitude": 77.24149
+    }
+  },
+  {
+  	"id": 7,
+    "name":"Lajpat Nagar Mata Naina",
+    "coords": {
+      "latitude": 28.569037,
+      "longitude": 77.244065
+    }
+  },
+  {
+  	"id": 8,
+    "name":"Lajpat Nagar",
+    "coords": {
+      "latitude": 28.563805,
+      "longitude": 77.24733
+    }
+  },
+  {
+  	"id": 9,
+    "name":"Kailash colony",
+    "coords": {
+      "latitude": 28.559336,
+      "longitude":77.245012
+    }
+  },
+  {
+  	"id": 10,
+    "name":"Greater KAILASH",
+    "coords": {
+      "latitude": 28.555817,
+      "longitude":77.237841
+    }
+  },
+  {
+  	"id": 11,
+    "name":"New moti bagh",
+    "coords": {
+      "latitude": 28.580923,
+      "longitude":77.18687
+    }
+  },
+  {
+  	"id": 12,
+    "name":"Sarojini",
+    "coords": {
+      "latitude": 28.579641,
+      "longitude":77.19128
+    }
+  },
+  {
+  	"id": 13,
+    "name":"Sarojini",
+    "coords": {
+      "latitude": 28.576650,
+      "longitude":77.196711
+    }
+  },
+  {
+  	"id": 14,
+    "name":"Sarojini",
+    "coords": {
+      "latitude": 28.575775,
+      "longitude":77.197172
+    }
+  },
+  {
+  	"id": 15,
+    "name":"Sarojini",
+    "coords": {
+      "latitude": 28.575690,
+      "longitude":77.195444
+    }
+  },
+  {
+  	"id": 16,
+    "name":"Netagi nagar",
+    "coords": {
+      "latitude": 28.574501,
+      "longitude":77.18828
+    }
+  },
+  {
+  	"id": 17,
+    "name":"Netagi nagar",
+    "coords": {
+      "latitude": 28.575707,
+      "longitude":77.188366
+    }
+  },
+  {
+  	"id": 18,
+    "name":"rk puram",
+    "coords": {
+      "latitude": 28.570548,
+      "longitude":77.183943    }
+  },
+  {
+  	"id": 19,
+    "name":"rk puram sector 1",
+    "coords": {
+      "latitude": 28.564348,
+      "longitude":77.181261
+    }
+  },
+  {
+  	"id": 20,
+    "name":"rk puram amar shaheed",
+    "coords": {
+      "latitude": 28.568144,
+      "longitude":77.172453 
+    }
+  }
+]

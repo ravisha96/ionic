@@ -1,0 +1,28 @@
+<div class="full-height">
+<ui-gmap-google-map 
+	center="map.center" 
+	centered="true" 
+	ng-cloak 
+	zoom="map.zoom" 
+	draggable="true" 
+	options="map.options" 
+	idKey="map.id">
+	
+	
+	 <ui-gmap-marker 
+		coords="marker.coords" 
+		options="marker.options" 
+		idkey="marker.id">
+	</ui-gmap-marker>
+ 
+	<ui-gmap-markers 
+		models="map.markers" 
+		coords="'coords'" 
+		idKey="'id'">
+	</ui-gmap-markers> 
+	
+</ui-gmap-google-map>
+	<!-- <div google-map location="location" class="full-height">
+	
+	</div>	 -->
+</div>

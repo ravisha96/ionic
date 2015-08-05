@@ -1,0 +1,64 @@
+.bar.bar-stable{
+	background-color: #355c7d;
+	color: #fff;
+}
+
+.bar.bar-stable .title,
+.bar-stable .button.button-clear {
+	color: #fff;	
+}
+
+.item-input{
+	background: #3b81b3;
+}
+
+input[type="search"],
+input::-webkit-input-placeholder,
+.placeholder-icon {
+	color: #C5E2F7;
+}
+
+.map-toggler {
+	width: 90%;
+	margin: 0 auto;
+	height: 50px;
+}
+
+.map-toggler > .button:before, 
+.button-bar > .button .icon:before {
+	line-height: 33px;
+	position: relative;
+
+}
+
+.map-toggle {
+	min-height: 35px;
+	margin-top: 10px;
+    overflow: visible !important;
+    border: 0px;
+    color: #559fd3;
+    background: #fdfefc;
+}
+
+.map-toggle.icon-right:before {
+	float: none;
+	margin-right: 7px;
+	line-height: 38px;
+}
+
+.map-toggle.activeBtn:after {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #fb9828;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+}
+
+.activeBtn {
+	background: #fb9828;
+	color: #fff;
+}

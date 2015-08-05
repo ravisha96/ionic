@@ -1,0 +1,153 @@
+/* Empty. Add your own CSS if you like */
+
+/*************** GLOBAL ***************/
+html, body, .container {
+	height: 100%;
+	width: 100%;
+}
+
+.spacer-10 {
+	margin-top: 10px;
+}
+
+.full-height {
+	height: 100%;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+
+.angular-google-map-container, .angular-google-map { 
+	height: 100%; 
+}
+
+.findAToilet .scroll {
+	height: calc(93% - 55px);
+  	margin-top: 44px;
+}
+
+.findAToilet .scroll .map {
+	height: 81%;
+}
+
+/*.addAToilet .angular-google-map-container { height: 200px; }*/
+.addAToilet .gmap {
+	position: relative;
+}
+
+.addAToilet .gmap .camera{
+	width: 40px;
+	height: 40px;
+	background: rgb(215, 215, 215);
+	position: absolute;
+	z-index: 1;
+	right: 10px;
+	top: 10px;
+	border-radius: 4px;
+	opacity: 0.4;
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.addAToilet .gmap .camera i {
+	margin-left: 5px;
+	line-height: 40px;
+}
+
+.addAToilet .scrollable-container {
+	height: 160px;
+}
+
+.addAToilet .scrollable-container .scrollable {
+	height: 168px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.gm-style-mtc,
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2_hdpi.png"],
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2_hdpi.png"],
+a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
+	display:none
+}
+
+.toi-icon {
+	float: right;
+	display: inline-block;
+}
+
+.toi-location-name {
+	display: inline-block;	
+	width: 250px;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.toi-list .list{
+	margin-top: 49px;
+}
+
+.map-container {
+	height: 100%; width: 100%; position: relative;
+}
+
+
+/************ COLOR CODE ***********/
+.c-355c7d {
+	color: #355c7d;
+}
+
+/************ COLOR CODE ***********/
+
+/************ MAP LIST *************/
+
+.map-list .location{
+	width: 100%;
+	font-size: 1em;
+}
+
+.map-list .location figure {
+	display: inline-block;
+	width: 50px;
+	vertical-align: top;
+}
+
+.map-list .location h3 {
+	color: #fb931e;
+	font-size: 1em;
+	margin: 0;
+}
+
+.map-list .location .landmark {
+	text-transform: capitalize;
+}
+
+.map-list .location .info {
+	display: inline-block;
+	width: calc(100% - 60px);
+	float: right;
+}
+
+.map-list .distance i{
+	color: #fb931e;
+	font-size: 1.2em; 
+}
+
+.map-list .transport-mode{
+	font-size: 2em;
+	margin-top: .3em;
+	color: #355c7d;
+}
+
+.map-list .transport-mode span{
+    font-size: 0.5em;
+    margin-right: calc(35% - 5em);
+}
+
+.map-list .transport-mode i {
+	vertical-align: middle;
+}
+
+/************ MAP LIST *************/

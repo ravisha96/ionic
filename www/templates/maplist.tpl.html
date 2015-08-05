@@ -1,0 +1,32 @@
+<ion-view view-title="Find A Toilet" class="map-list">
+  <ion-content>
+    <ion-list class="capitalize toi-list">
+      <!-- <ion-item ng-repeat="location in map.markers | filter:locationsearch">
+        <div class="toi-location-list">{{location.name}}</div>
+        <div ui-sref="app.home.map({lid: location.id})" class="toi-icon ion-ios-location"></div>
+      </ion-item> -->
+      <ion-item class="location" ui-sref="app.home.map({lid: location.id})">
+      	<figure>
+      		<i class="ion-ios-location-outline"></i>
+      		<figcaption>ravi</figcaption>
+      	</figure>
+      	<article class="info">
+	        <h3 class="toi-location-name">City Center</h3>
+	        <div class="landmark">Near EM Bypass Road, Kolkotta</div>
+	        <div class="distance">
+	        	<i class="ion-ios-location"></i>
+	        	<span class="capitalize c-355c7d">5.20 Kilometer from Mani Square</span>
+	        </div>
+	        <div class="transport-mode">
+	        	<i class="ion-android-bus"></i>
+	        	<span>30 Mins</span>
+	        	<i class="ion-model-s"></i>
+	        	<span>20 Mins</span>
+	        	<i class="ion-android-walk"></i>
+	        	<span>80 Mins</span>
+	        </div>
+      	</article>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
