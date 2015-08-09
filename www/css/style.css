@@ -10,6 +10,10 @@ html, body, .container {
 	margin-top: 10px;
 }
 
+.pad-10 {
+	padding: 10px;
+}
+
 .full-height {
 	height: 100%;
 }
@@ -23,7 +27,7 @@ html, body, .container {
 
 .findAToilet .scroll {
 	height: calc(93% - 55px);
-  	margin-top: 44px;
+  	margin-top: 5px;
 }
 
 .findAToilet .scroll .map {
@@ -85,13 +89,19 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	white-space: nowrap;
 }
 
-.toi-list .list{
-	margin-top: 49px;
-}
-
 .map-container {
 	height: 100%; width: 100%; position: relative;
 }
+
+.ellipsis {
+    overflow: hidden;
+    text-wrap: none;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 
 
 /************ COLOR CODE ***********/
@@ -99,34 +109,86 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	color: #355c7d;
 }
 
+.bg-3F96D9 {background: #3F96D9 !important;}
+.bg-3A86C1 {background: #3A86C1 !important;}
+.bg-2A94BC {background: #2A94BC !important;}
+.bg-4EACD0 {background: #4EACD0 !important;}
+.bg-4A7EB8 {background: #4A7EB8 !important;}
+.bg-605398 {background: #605398 !important;}
+.bg-524364 {background: #524364 !important;}
+
 /************ COLOR CODE ***********/
 
+
+
+/************ LEFT MENU ***********/
+.left-menu {
+	color: #fff;
+}
+
+/************ LEFT MENU ***********/
+
+
+
+
+
+
+/************ MAP ******************/
+
+.searchInput {
+	margin-top: 40px;
+}
+
+.scroll-content {
+	height: calc(100% - 50px);
+}
+
+
+/************ MAP ******************/
+
+
+
+
 /************ MAP LIST *************/
+
+.map-list {
+	margin-top: 110px;
+}
 
 .map-list .location{
 	width: 100%;
 	font-size: 1em;
 }
 
-.map-list .location figure {
+.map-list .toilet-type {
 	display: inline-block;
 	width: 50px;
 	vertical-align: top;
 }
 
-.map-list .location h3 {
+.toilet-type img{
+    max-width: 100%;
+    margin-bottom: 1em;
+    margin-left: 5px;
+}
+
+.map-list .toilet-type figcaption {
+	text-align: center;
+}
+
+.map-list h3 {
 	color: #fb931e;
-	font-size: 1em;
+	font-size: 1.1em;
 	margin: 0;
 }
 
-.map-list .location .landmark {
+.map-list .landmark {
 	text-transform: capitalize;
 }
 
-.map-list .location .info {
+.map-list .info {
 	display: inline-block;
-	width: calc(100% - 60px);
+	width: calc(90% - 70px);
 	float: right;
 }
 
@@ -136,14 +198,14 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 }
 
 .map-list .transport-mode{
-	font-size: 2em;
+	font-size: 1.8em;
 	margin-top: .3em;
 	color: #355c7d;
 }
 
 .map-list .transport-mode span{
     font-size: 0.5em;
-    margin-right: calc(35% - 5em);
+    margin-right: calc(35% - 4.8em);
 }
 
 .map-list .transport-mode i {
@@ -151,3 +213,162 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 }
 
 /************ MAP LIST *************/
+
+
+
+
+/************ ADD A TOILET *************/
+.addToilet .scroll-content{height: calc(100% - 45px);}
+.addToilet .scroll.padding {height: 100%;}
+
+.addToilet .action-btn .button {
+	width: 49%;
+	margin: 0;
+	padding: 0;
+	bottom: 0;
+	border-color: transparent;
+}
+
+.addToilet .button-submit {
+	background: #FA931E;
+	color: #fff;
+}
+
+.addToilet .button-cancel {
+	background: #426884;
+	color: rgb(149, 194, 234);
+}
+
+.addToilet .item {
+	background: none;
+}
+
+.addToilet .padding {
+	padding: 0;
+}
+
+.addToilet .camera-click {
+	border-color: #f8901b;
+    background-color: rgba(248, 144, 27, 0.5);
+    padding: 3px 0;
+    color: #fff;
+    cursor: pointer;
+    height: 10%;
+}
+
+.camera-click .circle{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	background: #f8901b;
+	margin: 0 auto;
+}
+
+.toggle-orange input:checked + .track{
+	background-color: rgba(248, 144, 27, 0.5);
+	border-color: #f8901b;
+}
+.camera-click .circle i {
+    color: #3C81B3;
+    font-size: 38px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -14px;
+    margin-top: -17px;
+}
+
+.camera-click .circle div {
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    border-radius: 50%;
+    margin-left: 2px;
+    margin-top: 2px;
+    position: relative;
+}
+
+.addToilet .camera-click:active,
+.toggle-orange input:checked + .track .handle {
+	background-color: #f8901b;
+}
+
+.add-toilet-form {
+	font-size: 24px;
+	background: #F7F6F6;
+	position: absolute;
+	bottom: 0;
+	height: 45%;
+	width: 100%;
+}
+
+.auto-fill {
+    border: 1px solid #E6E6E5;
+    border-radius: 5px;
+    width: 100%;
+    color: #616161;
+    padding: 5px;
+}
+
+.auto-fill input {
+	width: 100%;
+	border: 1px solid #e6e6e5;
+	border-radius: 5px;
+	height: 40px;
+	padding: 5px;
+	color: #6B6A6A;
+}
+
+.ionic_ratings{
+	display: inline-block;
+	font-size: 24px;
+	position: absolute;
+    line-height: 48px;
+}
+
+.rating .item,
+.timing .item {
+	display: inline-block;
+}
+
+.timing input {
+    background-color: transparent;
+    display: inline-block;
+    margin-top: -35px;
+    margin-right: 10px;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.toggle-toilet-type div {
+	display: inline-block;
+}
+
+.toggle-toilet-type label {
+	left: 75px;
+	display: inline-block;
+}
+
+/************ ADD A TOILET *************/
+
+
+
+
+
+/************ FOOTER *************/
+
+.tabs.footer {
+	background: #3B81B3;
+	border-bottom: 0;
+	border-top: 1px solid #d45254 !important;
+	height: 45px;
+	color: #fff;
+	line-height: 40px;
+}
+
+
+/************ FOOTER *************/

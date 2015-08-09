@@ -8,9 +8,11 @@
         .module('myToiletApp')
         .controller('LocationMapCtrl', LocationMap);
 
-    LocationMap.$inject = ['$scope', 'LocationFactory', 'uiGmapGoogleMapApi', '$q', '$rootScope', '$stateParams'];
+    LocationMap.$inject = ['$scope', 'LocationFactory', 'uiGmapGoogleMapApi', '$q', '$rootScope', '$stateParams', '$state'];
 
-    function LocationMap($scope, location, googleMap, $q, $rootScope, $stateParams) {
+    function LocationMap($scope, location, googleMap, $q, $rootScope, $stateParams, $state) {
+
+        $scope.map = {};
 
         $rootScope.$on('searchClicked', drawSearchedLocation);
 
@@ -21,13 +23,16 @@
         /**
          * If url has a id params, draw the markers by location id.
          */
-        document.addEventListener("deviceready", function(){
+        // document.addEventListener("deviceready", function(){
+        
+        if (!$scope.map.isLoading) {
             if ($stateParams.lid) {
                 drawLocationById(parseInt($stateParams.lid));
             } else {
                 drawAllMarkers();
             }
-        }, false);
+        }
+        // }, false);
 
 
 
@@ -36,15 +41,18 @@
          * @return {type} [description]
          */
         function drawAllMarkers() {
-
+            var distance;
+            $scope.map.isLoading = true;
             location.reverseGeoCoding(location.addressComponent.postalCode).then(function (response) {
 
                 location.getAllLocations(response.longName).then(function(response) {
-                    console.log(response);
                     // Cache the locations in service..
                     location.list = response.data;
-                    $scope.map.markers = response.data;
-                    location.distanceCalculator([$scope.map], $scope.map.markers, ['center', 'coords']);
+                    distance = location.distanceCalculator([location.coordinate], location.list, ['coords', 'coords']);
+                    distance.then(function (distance) {
+                        $scope.map.isLoading = false;
+                        $scope.map.markers = distance;
+                    })
                 });
 
             });

@@ -17,13 +17,14 @@
             getLocationById: GetLocationById,
             distanceCalculator: DistanceCalculator,
             list: null,
+            coordinate: null,
             addressComponent: {
                 postalCode: 'postal_code', 
                 country: 'country',
                 locality: 'administrative_area_level_1',
                 district: 'administrative_area_level_2',
                 locality: 'sublocality_level_1',
-                subLocality: 'sublocality_level_2',
+                subLocality: 'sublocality_lefvel_2',
                 area: 'sublocality_level_3',
                 name: 'route'
             }
@@ -37,13 +38,14 @@
          * DistanceCalculator methods calculate the distance between two locations, and
          * returns the nearest distance of all.
          *
-         * @return {object} nearest: is the nearest location details, others: other locations
-         * details with Kilomerters and Time.
+         * @return {Object} returns a defered object, the object consist of the nearest
+         * ascending order  
          */
         function DistanceCalculator(origin, destinations, property) {
 
-            var property = property || [];
-            var distance = new google.maps.DistanceMatrixService();
+            var property = property || [],
+                $defer = $.Deferred(),
+                distance = new google.maps.DistanceMatrixService();
             this.destinations = destinations;
 
             distance.getDistanceMatrix({
@@ -54,8 +56,25 @@
                 avoidHighways: false,
                 avoidTolls: false
             }, function(response, status) {
+                if (status === google.maps.DistanceMatrixStatus.OK) {
+                    
+                    _.forEach(_.first(response.rows).elements, function (travel, index) {
+                        destinations[index].driving = {
+                            distance: travel.distance.text,
+                            duration: travel.duration.text
+                        }
+                    });
+
+                    $defer.resolve(destinations);
+                
+                } else {
+                    $defer.reject(status);
+                }
+
                 callback(response, status, destinations)
             });
+
+            return $defer.promise();
         }
 
         /**
@@ -74,9 +93,10 @@
         }
 
         function callback(response, status, destinations) {
-            console.log(destinations);
-            console.log(response);
-            console.log(status);
+
+            _.forEach(_.first(response.rows).elements, function (travel, index) {
+                destinations[index].distance = travel.distance.text
+            });
         }
 
         /**
@@ -188,9 +208,10 @@
 
             GetCurrentLocation().then(function(position) {
 
-                var infowindow = new google.maps.InfoWindow();
-                var geocoder = new google.maps.Geocoder();
-                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var infowindow = new google.maps.InfoWindow(),
+                    geocoder = new google.maps.Geocoder(),
+                    latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    defaults.coordinate = position;
 
                 geocoder.geocode({
                     'latLng': latlng

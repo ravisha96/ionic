@@ -62,3 +62,17 @@ input::-webkit-input-placeholder,
 	background: #fb9828;
 	color: #fff;
 }
+
+.item-complex .item-content,
+.item {
+	/*color: #fff;*/
+	border-style: none;
+}
+
+.bg-3F96D9 a{background: #3F96D9 !important;}
+.bg-3A86C1 a{background: #3A86C1 !important;}
+.bg-2A94BC a{background: #2A94BC !important;}
+.bg-4EACD0 a{background: #4EACD0 !important;}
+.bg-4A7EB8 a{background: #4A7EB8 !important;}
+.bg-605398 a{background: #605398 !important;}
+.bg-524364 a{background: #524364 !important;}
