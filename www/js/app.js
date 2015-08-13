@@ -23,6 +23,7 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyDTfLrnNHX3BcdNDZ0MjhKu7S5yBZx2csY',
             v: '3.17',
+            pan: '',
             libraries: 'weather,geometry,visualization'
         });
     })
@@ -46,7 +47,7 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
             abstract: true,
             views: {
                 'menuContent': {
-                    controller: 'LocationMapCtrl',
+                    // controller: 'LocationMapCtrl',
                     templateUrl: 'templates/home.tpl.html'
                 }
             },

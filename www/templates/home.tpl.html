@@ -16,21 +16,21 @@
 
     </ion-content>
     
-    <div class="tabs footer">
+    <div class="tabs footer" ng-click="sortToiletByMode($event)">
 
-      <a class="tab-item active" ng-class="{active: mode === 'FREE'}" ui-sref="app.home.mode({mode: 'FREE'})">
+      <a class="tab-item active" ng-class="{active: mode === 'FREE'}" data-mode="free">
         <i class="icon ion-pricetag"></i>
         Free
       </a>
-      <a class="tab-item" ng-class="{active: mode === 'PAID'}" ui-sref="app.home.mode({mode: 'PAID'})">
+      <a class="tab-item" ng-class="{active: mode === 'PAID'}" data-mode="paid">
         <i class="icon ion-cash"></i>
         Paid
       </a>
-      <a class="tab-item" ng-class="{active: mode === 'MALLS'}" ui-sref="app.home.mode({mode: 'MALLS'})">
+      <a class="tab-item" ng-class="{active: mode === 'MALLS'}" data-mode="shopping">
         <i class="icon ion-bag"></i>
         Malls
       </a>
-      <a class="tab-item" ng-class="{active: mode === 'STATIONS'}" ui-sref="app.home.mode({mode: 'STATIONS'})">
+      <a class="tab-item" ng-class="{active: mode === 'STATIONS'}" data-mode="gas">
         <i class="icon ion-model-s"></i>
         Gas Station
       </a>

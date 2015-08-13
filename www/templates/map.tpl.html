@@ -15,9 +15,18 @@
 		</ui-gmap-marker>
 	 
 		<ui-gmap-markers 
-			models="map.markers" 
+			models="map.markers"  
 			coords="'coords'" 
+			icon="'mode'" 
+			click="clickMe" 
+			fit='true' 
+			events="markersEvents"
 			idKey="'id'">
+
+				<ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                    <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
+                </ui-gmap-windows>
+
 		</ui-gmap-markers> 
 		
 	</ui-gmap-google-map>

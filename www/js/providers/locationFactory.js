@@ -16,20 +16,22 @@
             getLocationByName: GetLocationByName,
             getLocationById: GetLocationById,
             distanceCalculator: DistanceCalculator,
+            getSpecificAddressComponent: AddressComponentOfCurrentLocation,
             list: null,
             coordinate: null,
             addressComponent: {
-                postalCode: 'postal_code', 
+                postalCode: 'postal_code',
                 country: 'country',
                 locality: 'administrative_area_level_1',
                 district: 'administrative_area_level_2',
-                locality: 'sublocality_level_1',
-                subLocality: 'sublocality_lefvel_2',
+                locality1: 'sublocality_level_1',
+                subLocality: 'sublocality_level_2',
                 area: 'sublocality_level_3',
-                name: 'route'
+                name: 'route',
+                address: 'formatted_address'
             }
         };
-        
+
 
 
         return defaults;
@@ -39,7 +41,7 @@
          * returns the nearest distance of all.
          *
          * @return {Object} returns a defered object, the object consist of the nearest
-         * ascending order  
+         * ascending order
          */
         function DistanceCalculator(origin, destinations, property) {
 
@@ -57,8 +59,8 @@
                 avoidTolls: false
             }, function(response, status) {
                 if (status === google.maps.DistanceMatrixStatus.OK) {
-                    
-                    _.forEach(_.first(response.rows).elements, function (travel, index) {
+
+                    _.forEach(_.first(response.rows).elements, function(travel, index) {
                         destinations[index].driving = {
                             distance: travel.distance.text,
                             duration: travel.duration.text
@@ -66,7 +68,7 @@
                     });
 
                     $defer.resolve(destinations);
-                
+
                 } else {
                     $defer.reject(status);
                 }
@@ -94,7 +96,7 @@
 
         function callback(response, status, destinations) {
 
-            _.forEach(_.first(response.rows).elements, function (travel, index) {
+            _.forEach(_.first(response.rows).elements, function(travel, index) {
                 destinations[index].distance = travel.distance.text
             });
         }
@@ -104,7 +106,7 @@
          * @return {object} list of all the locations.
          */
         function GetAllLocations(searchString) {
-            return $http.get('http://www.findatoilet.in/admin/api/locations.php?query='+searchString);
+            return $http.get('http://www.findatoilet.in/admin/api/locations.php?query=' + searchString);
         }
 
 
@@ -119,9 +121,8 @@
             var $defer = $.Deferred();
 
             navigator.geolocation.getCurrentPosition(function(position) {
-
                 if (position.coords) {
-
+                    defaults.coordinate = position;
                     $defer.resolve(position);
                 } else {
 
@@ -144,13 +145,17 @@
             var regExp = new RegExp(name, 'ig'),
                 locations = [];
 
-            _.forEach(defaults.list, function(location) {
-                if (regExp.test(location.name)) {
-                    locations.push(location);
-                }
+            GetAllLocations(name).then(function (response) {
+                
+                _.forEach(response.data, function(location) {
+                    if (regExp.test(location.name)) {
+                        locations.push(location);
+                    }
+                });
+                
+                return locations;
             });
 
-            return locations;
 
         }
 
@@ -181,16 +186,23 @@
         function AddressComponentOfCurrentLocation(results, status, component) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
-                    for (var i = 0; i < results[0].address_components.length; i++) {
-                        var types = results[0].address_components[i].types;
+                    if (component !== defaults.addressComponent.address) {
+                        for (var i = 0; i < results[0].address_components.length; i++) {
+                            var types = results[0].address_components[i].types;
 
-                        for (var typeIdx = 0; typeIdx < types.length; typeIdx++) {
-                            if (types[typeIdx] === component) {
-                                return {
-                                    longName: results[0].address_components[i].long_name,
-                                    shortName: results[0].address_components[i].short_name 
+                            for (var typeIdx = 0; typeIdx < types.length; typeIdx++) {
+                                if (types[typeIdx] === component) {
+                                    return {
+                                        longName: results[0].address_components[i].long_name,
+                                        shortName: results[0].address_components[i].short_name
+                                    }
                                 }
                             }
+                        }
+                    } else {
+                        return {
+                            longName: results[0].formatted_address,
+                            shortName: results[0].formatted_address
                         }
                     }
                 } else {
@@ -211,13 +223,12 @@
                 var infowindow = new google.maps.InfoWindow(),
                     geocoder = new google.maps.Geocoder(),
                     latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    defaults.coordinate = position;
 
                 geocoder.geocode({
                     'latLng': latlng
                 }, function(results, status) {
                     var results = (component) ? AddressComponentOfCurrentLocation(results, status, component) : results;
-                    $defer.resolve(results);
+                    $defer.resolve({results: results, status: status});
                 }, function(err) {
                     $defer.reject(err);
                 });

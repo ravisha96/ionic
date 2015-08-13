@@ -10,6 +10,19 @@
                 draggable="true" 
                 options="map.options" 
                 idKey="map.id">
+                
+                 <ui-gmap-marker 
+                    coords="marker.coords" 
+                    options="marker.options" 
+                    idkey="marker.id">
+                </ui-gmap-marker>
+             
+                <ui-gmap-markers 
+                    models="map.markers" 
+                    coords="'coords'" 
+                    idKey="'id'">
+                </ui-gmap-markers> 
+                
             </ui-gmap-google-map>
         </div>
 
@@ -23,26 +36,26 @@
         <form class="add-toilet-form">
             <div class="pad-10">
                 <label class="item auto-fill">
-                    <input type="text" placeholder="Auto Fill Address" ng-model="address">
+                    <input type="text" placeholder="Auto Fill Address" ng-model="location.name">
                 </label>
                 <ion-toggle class="toggle-toilet-type" name="Free" toggle-class="toggle-orange">Free</ion-toggle>
                 <div class="timing">
                     <span class="item">
                         Timing
                     </span>
-                    <input type="time">
-                    <input type="time">
+                    <input type="time" ng-model="location.openTime">
+                    <input type="time" ng-model="location.closeTime">
                 </div>
                 <div class="rating">
                     <span class="item">
                         Rating
                     </span>
-                    <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                    <ionic-ratings ng-model="location.mode" ratingsobj='ratingsObject'></ionic-ratings>
                 </div>
             </div>
             <div class="action-btn">
-                <button class="button button-cancel">Cancel</button>
-                <button class="button button-submit">Tap me!</button>
+                <div class="btn button-cancel">Cancel</div>
+                <div class="btn button-submit" ng-click="addNewToilet()"> Add</div>
             </div>
         </form>
     </ion-content>

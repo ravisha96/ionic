@@ -13,27 +13,33 @@
 
   <ion-side-menu side="left">
     <ion-content>
-      <ion-list class="left-menu">
+      <ion-list class="left-menu full-height">
         <ion-item menu-close ui-sref="app.home.maps" class="bg-3F96D9">
-          Home
+          <i class="ion-ios-home-outline"></i> Home
         </ion-item>
         <ion-item menu-close ui-sref="app.add" class="bg-3A86C1">
-          Add A Toilet
+           <i class="ion-ios-person-outline"></i> Add A Toilet
         </ion-item>
-        <ion-item menu-close ng-click="login()" class="bg-2A94BC">
-          Login
+      <ion-item menu-close ui-sref="app" ng-click="login()" class="bg-2A94BC">
+          <i class="ion-ios-person-outline"></i> FAQ's
         </ion-item>
         <ion-item menu-close class="bg-4EACD0" ui-sref="app.addmap">
-          Register
+          <i class="ion-ios-star-outline"></i> Rate the App
         </ion-item>
         <ion-item menu-close href="#/app/search" class="bg-4A7EB8">
-          Faq
+          <i class="ion-ios-chatboxes-outline"></i> Feedback
         </ion-item>
         <ion-item menu-close href="#/app/search" class="bg-605398">
-          Feedback
+          <i class="ion-ios-paper-outline"></i> Terms &amp; Condition
         </ion-item>
         <ion-item menu-close href="#/app/search" class="bg-524364">
-          About Us
+          <i class="ion-ios-people-outline"></i> About Us
+        </ion-item>
+        <ion-item menu-close href="#/app/search" class="bg-524364">
+          <i class="ion-ios-email-outline"></i> Contact Us
+        </ion-item>
+        <ion-item menu-close href="#/app/search" class="bg-524364">
+          Spread the Word
         </ion-item>
       </ion-list>
     </ion-content>

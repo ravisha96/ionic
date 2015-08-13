@@ -14,9 +14,15 @@ html, body, .container {
 	padding: 10px;
 }
 
-.full-height {
-	height: 100%;
+.google-map {
+	height: 97%;
+	margin-top: 2px;
 }
+
+.full-height {
+    height: 93%;
+}
+
 .capitalize {
 	text-transform: capitalize;
 }
@@ -38,6 +44,8 @@ html, body, .container {
 .addAToilet .gmap {
 	position: relative;
 }
+
+.addAToilet .scroll{calc(100% - 47px)}
 
 .addAToilet .gmap .camera{
 	width: 40px;
@@ -139,8 +147,8 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	margin-top: 40px;
 }
 
-.scroll-content {
-	height: calc(100% - 50px);
+.findAToilet.pane .scroll-content {
+	height: calc(100% - 45px);
 }
 
 
@@ -218,15 +226,33 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 
 
 /************ ADD A TOILET *************/
-.addToilet .scroll-content{height: calc(100% - 45px);}
-.addToilet .scroll.padding {height: 100%;}
+.addToilet {background: #F7F6F6;}
+.addToilet .scroll-content {height: calc(100% - 43px);}
+.addToilet .scroll.padding {
+	height: 100%;
+	position: relative;
+}
 
-.addToilet .action-btn .button {
-	width: 49%;
+.addToilet .action-btn {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.addToilet .action-btn .btn {
+	width: 50%;
 	margin: 0;
 	padding: 0;
 	bottom: 0;
-	border-color: transparent;
+    position: relative;
+    float: left;
+    min-height: 47px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
 }
 
 .addToilet .button-submit {
@@ -250,10 +276,12 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 .addToilet .camera-click {
 	border-color: #f8901b;
     background-color: rgba(248, 144, 27, 0.5);
-    padding: 3px 0;
+	padding-bottom: 4px;
     color: #fff;
     cursor: pointer;
     height: 10%;
+    margin-top: -8%;
+    z-index: 1;
 }
 
 .camera-click .circle{
@@ -269,6 +297,19 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	background-color: rgba(248, 144, 27, 0.5);
 	border-color: #f8901b;
 }
+
+.addToilet .toggle-small .track {
+	background: rgba(50, 102, 140, 0.66);
+}
+
+.addToilet .toggle-small .handle {
+	box-shadow: 0 2px 5px rgba(66, 104, 132, 0.52);
+}
+
+.addToilet .toggle .handle {
+	background: #426884;
+}
+
 .camera-click .circle i {
     color: #3C81B3;
     font-size: 38px;
@@ -298,10 +339,11 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 .add-toilet-form {
 	font-size: 24px;
 	background: #F7F6F6;
-	position: absolute;
+	position: relative;
 	bottom: 0;
-	height: 45%;
-	width: 100%;
+	height: 50%;
+    width: 100%;
+    z-index: 0;
 }
 
 .auto-fill {
@@ -326,6 +368,7 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	font-size: 24px;
 	position: absolute;
     line-height: 48px;
+    left: 92px;
 }
 
 .rating .item,
@@ -340,8 +383,13 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
     margin-right: 10px;
     border: 1px solid rgba(0,0,0,.1);
     padding: 5px;
+    width: 30%;
     padding-bottom: 10px;
     padding-left: 10px;
+}
+
+.timing input:last-child {
+	margin-right: 0;
 }
 
 .toggle-toilet-type div {
@@ -349,8 +397,9 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 }
 
 .toggle-toilet-type label {
-	left: 75px;
+	left: 85px;
 	display: inline-block;
+	width: 45px;
 }
 
 /************ ADD A TOILET *************/

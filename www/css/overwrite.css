@@ -20,8 +20,10 @@ input::-webkit-input-placeholder,
 
 .map-toggler {
 	width: 90%;
-	margin: 0 auto;
-	height: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 1;
+    left: 5%;
 }
 
 .map-toggler > .button:before, 
@@ -65,8 +67,19 @@ input::-webkit-input-placeholder,
 
 .item-complex .item-content,
 .item {
-	/*color: #fff;*/
+	height: 14.485714%;
 	border-style: none;
+	color: #fff;
+}
+
+.item.item-complex .item-content {
+	padding: 2em 49px 3em 1.5em;
+	font-size: 1.2em;
+}
+
+.item.item-complex .item-content i {
+	margin-right: .5em;
+	font-size: 1.3em;
 }
 
 .bg-3F96D9 a{background: #3F96D9 !important;}
@@ -76,3 +89,9 @@ input::-webkit-input-placeholder,
 .bg-4A7EB8 a{background: #4A7EB8 !important;}
 .bg-605398 a{background: #605398 !important;}
 .bg-524364 a{background: #524364 !important;}
+
+
+.scroll-content.ionic-scroll .left-menu .list,
+.scroll-content.ionic-scroll .scroll {
+	height: 100%;
+} 

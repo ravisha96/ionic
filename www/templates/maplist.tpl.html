@@ -1,7 +1,7 @@
 <ion-view view-title="Find A Toilet" class="map-list">
   <ion-content>
     <ion-list class="capitalize toi-list">
-      <ion-item ng-repeat="location in map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ui-sref="app.home.map({lid: location.id})">
+      <ion-item ng-repeat="location in map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ng-click="test($event, $index)">
       	<figure class="toilet-type">
       		<img src="img/icon-toilet-free.png" alt="">
       		<figcaption>
