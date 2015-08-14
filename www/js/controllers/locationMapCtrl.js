@@ -54,11 +54,13 @@
             $scope.map.isLoading = true;
             location.reverseGeoCoding(location.addressComponent.locality1).then(function(response) {
 
-                location.getAllLocations(response.results.longName).then(function(response) {
+                location.getAllLocations("hauz khas").then(function(response) {
+
                     // Cache the locations in service..
                     udpateMapCordinates.call(location.coordinate);
                     _.forEach(response.data, function(toilet) {
                         toilet.mode = 'http://findatoilet.in/admin/img/marker-' + toilet.mode + '.png';
+                        toilet.template = 'http://localhost:8100/templates/markers.tpl.html';
                     });
 
                     $scope.map.markers = response.data;
@@ -121,7 +123,7 @@
          * @return {[type]} [description]
          */
         function drawSearchedLocation(event) {
-            location.getAllLocations($scope.locationsearch).then(function (response) {
+            location.getAllLocations($scope.locationsearch).then(function(response) {
                 udpateMapCordinates.call(_.first(response.data));
                 $scope.map.markers = response.data;
             });
@@ -159,10 +161,31 @@
                     draggable: true
                 },
                 bounds: {},
-                scrollwheel: false
+                scrollwheel: false,
+                markersEvents: {
+                    click: function(marker, eventName, model, arguments) {
+                        console.log('Marker was clicked (' + marker + ', ' + eventName);
+                        $scope.map.window = {
+                            model: model,
+                            title: model.name,
+                            show: true,
+                            coords: model.coords,
+                            template: model.template
+                        };
+                    }
+                },
+                window: {
+                    coords: {},
+                    marker: {},
+                    show: false,
+                    closeClick: function() {
+                        this.show = false;
+                    },
+                    options: {}, // define when map is ready
+                    title: ''
+                }
             };
         }
-
 
 
         /**

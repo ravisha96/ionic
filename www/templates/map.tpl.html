@@ -6,26 +6,37 @@
 		zoom="map.zoom" 
 		draggable="true" 
 		options="map.options" 
+		data-tap-disabled="true" 
+		refresh="true" 
 		idKey="map.id">
 		
-		 <ui-gmap-marker 
+		<!-- <ui-gmap-marker 
 			coords="marker.coords" 
 			options="marker.options" 
 			idkey="marker.id">
-		</ui-gmap-marker>
+		</ui-gmap-marker> -->
 	 
 		<ui-gmap-markers 
-			models="map.markers"  
+			models="map.markers" 
+			doCluster="false" 
 			coords="'coords'" 
 			icon="'mode'" 
-			click="clickMe" 
+			click="'click'" 
 			fit='true' 
-			events="markersEvents"
-			idKey="'id'">
+			events="map.markersEvents"
+			idKey="'id'" style="position: relative;">
 
-				<ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
-                    <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
-                </ui-gmap-windows>
+				<ui-gmap-window 
+					doRebuildAll="true" 
+					show="map.window.show" 
+					coords="map.window.model.coords" 
+					options="map.window.options" 
+					closeClick="map.window.closeClick()" 
+					templateUrl="'templates/markers.tpl.html'">
+		            <div style="color: black">
+		                {{map.window.title}}
+		            </div>
+		        </ui-gmap-window>
 
 		</ui-gmap-markers> 
 		
