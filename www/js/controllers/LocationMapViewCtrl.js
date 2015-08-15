@@ -13,6 +13,71 @@
     function LocationMapView($scope, location, $q, $cordovaGeolocation, $ionicLoading) {
 
         var vm = this;
+        vm.markersOriginalCopy = [];
+
+        $scope.$on('sorted', sortToiletItem);
+
+
+        function deleteMarkers() {
+            _.forEach(vm.markers, function(marker) {
+                marker.setMap(null);
+            });
+
+            vm.markers = [];
+        }
+
+        /**
+         * drawAllMarkers method draw all the searched/sorted markers.
+         * @return {type} [description]
+         */
+        function drawAllMarkers() {
+
+            var infoWindow,
+                bounds = new google.maps.LatLngBounds(),
+                marker;
+
+            // Curernt location of the user. We don't want to attach the click event,
+            // hence its outside and response.data array item.
+            bounds.extend(vm.userCurrentLocation.position);
+            var markers = [];
+
+            _.forEach(vm.markers, function(response) {
+                marker = new google.maps.Marker(_.extend(response, {
+                    // Condition checks that coordinates are google map, or normal cordinates.
+                    // If normal, retrive the google map version.
+                    position: (!response.position.G && !response.position.K) ? new google.maps.LatLng(response.position.latitude, response.position.longitude) : response.position,
+                    map: vm.map,
+                    title: response.name,
+                    id: response.id
+                }));
+
+                // Extending the bounds area with each latlng.
+                bounds.extend(marker.position);
+
+                (function(marker, data) {
+                    google.maps.event.addListener(marker, 'click', function(e) {
+                        //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                        if (!infoWindow) {
+                            infoWindow = new google.maps.InfoWindow();
+                        }
+
+                        google.maps.event.addListener(infoWindow, 'domready', stylingInfoWindow);
+
+                        infoWindow.setContent(templateInfoWindow({
+                            content: data
+                        }));
+                        infoWindow.open(vm.map, marker);
+                    });
+                })(marker, response.name);
+
+                markers.push(marker);
+            });
+
+    
+            vm.markers = markers;
+            vm.map.fitBounds(bounds);
+            $ionicLoading.hide();
+        }
 
         /**
          * showMyLocationOnMap method create the marker based on the current location of the user.
@@ -20,7 +85,7 @@
          * @return {[type]} [description]
          */
         function showMyLocationOnMap() {
-            $scope.showLoader();
+            $scope.mta.showLoader();
             location.fetchCurrentLocation().then(function(latLng) {
 
                 var mapOptions = {
@@ -28,7 +93,7 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
-                vm.map = new google.maps.Map(document.getElementById("gmap"), mapOptions);
+                vm.map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
 
                 google.maps.event.addListenerOnce(vm.map, 'idle', function() {
 
@@ -38,9 +103,8 @@
                         position: latLng
                     });
 
-                    showNearByToilets({
-                        curLocation: marker
-                    });
+                    vm.userCurrentLocation = marker;
+                    searchNearByToilets();
                 });
 
             }, function(error) {
@@ -49,57 +113,39 @@
         }
 
         /**
-         * showNearByToilets method create the markers of the nearest toilet.
+         * searchNearByToilets method create the markers of the nearest toilet.
          * It positions/center/zoom the marker, by using google map LatLngBounds.
          * @return {[type]} [description]
          */
-        function showNearByToilets(user) {
-            var infoWindow, bounds = new google.maps.LatLngBounds(),
-                marker;
+        function searchNearByToilets(user) {
 
             location.reverseGeoCoding(location.addressComponent.locality1).then(function(response) {
 
                 location.getAllLocations("hauz khas").then(function(response) {
-
-                    // Curernt location of the user. We don't want to attach the click event,
-                    // hence its outside and response.data array item.
-                    bounds.extend(user.curLocation.position);
-
-                    _.forEach(response.data, function(response) {
-                        marker = new google.maps.Marker(_.extend(response, {
-                            position: new google.maps.LatLng(response.position.latitude, response.position.longitude),
-                            map: vm.map,
-                            title: response.name,
-                            id: response.id
-                        }));
-
-                        // Extending the bounds area with each latlng.
-                        bounds.extend(marker.position);
-
-                        (function(marker, data) {
-                            google.maps.event.addListener(marker, 'click', function(e) {
-                                //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-                                if (!infoWindow) {
-                                    infoWindow = new google.maps.InfoWindow();
-                                }
-
-                                google.maps.event.addListener(infoWindow, 'domready', stylingInfoWindow);
-
-                                infoWindow.setContent(templateInfoWindow({
-                                    content: data
-                                }));
-                                infoWindow.open(vm.map, marker);
-                            });
-                        })(marker, response.name);
-
-                    });
-
-                    vm.map.fitBounds(bounds);
-                    $ionicLoading.hide();
+                    vm.markersOriginalCopy = vm.markers = response.data;
+                    drawAllMarkers();
                 });
             });
         }
 
+
+        /**
+         * sortToiletItem method get called when user click on footer menu bar.
+         * It sorts the current list of toilets.
+         * @return {[type]} [description]
+         */
+        function sortToiletItem(event, sortedBy) {
+
+            deleteMarkers();
+
+            _.forEach(vm.markersOriginalCopy, function(marker) {
+                if (marker.mode === sortedBy) {
+                    vm.markers.push(marker);
+                }
+            });
+
+            drawAllMarkers();
+        }
 
         /**
          * stylingInfoWindow method stylize the info-window.
@@ -191,9 +237,10 @@
                 '</div>';
         }
 
+
         // google.maps.event.addDomListener(window, 'load', showMyLocationOnMap);
         showMyLocationOnMap();
-        $scope.showLoader();
+        $scope.mta.showLoader();
 
     }
 

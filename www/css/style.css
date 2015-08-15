@@ -495,11 +495,72 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	height: 45px;
 	color: #fff;
 	line-height: 40px;
+	padding-top: 0px !important;
 }
 
 .tab-item.active {
     background: #105789;
     box-shadow: 0px 0px 4px 0px rgb(70, 117, 150);
+}
+
+.footer .mta-icon {
+	text-indent: -9999px;
+}
+
+.footer .mta-icon-free {
+	background: url('../img/footer-icon-free.png') no-repeat;
+	background-size: 30%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.tab-item.active .mta-icon-free {
+	background: url('../img/footer-icon-active-free.png') no-repeat;
+	background-size: 30%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.footer .mta-icon-paid {
+	background: url('../img/footer-icon-paid.png') no-repeat;
+	background-size: 30%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.tab-item.active .mta-icon-paid {
+	background: url('../img/footer-icon-active-paid.png') no-repeat;
+	background-size: 30%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.footer .mta-icon-gas {
+	background: url('../img/footer-icon-gas.png') no-repeat;
+	background-size: 25%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.tab-item.active .mta-icon-gas {
+	background: url('../img/footer-icon-active-gas.png') no-repeat;
+	background-size: 25%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.footer .mta-icon-shopping {
+	background: url('../img/footer-icon-shopping.png') no-repeat;
+	background-size: 25%;
+    background-position-x: 50%;
+    background-position-y: 75%;
+}
+
+.tab-item.active .mta-icon-shopping {
+	background: url('../img/footer-icon-active-shopping.png') no-repeat;
+	background-size: 25%;
+    background-position-x: 50%;
+    background-position-y: 75%;
 }
 
 

@@ -7,8 +7,15 @@
             </label>
         </form>
         <div class="button-bar map-toggler">
-            <a ui-sref="app.home.maps" class="map-toggle button activeBtn icon-right ion-ios-location-outline">Map</a>
-            <a ui-sref="app.home.maplist" class="map-toggle button icon-right ion-ios-list-outline">List</a>
+            <a ui-sref="app.home.maps" 
+              ng-class="{'activeBtn': (selectedView === mta.view.MAP || !selectedView)}" 
+              ng-click="selectedView = mta.view.MAP"
+              class="map-toggle button icon-right ion-ios-location-outline">Map</a>
+
+            <a ui-sref="app.home.maplist" 
+              ng-class="{'activeBtn': selectedView === mta.view.LIST}" 
+              ng-click="selectedView = mta.view.LIST"
+              class="map-toggle button icon-right ion-ios-list-outline">List</a>
         </div>
         
   
@@ -16,23 +23,22 @@
 
     </ion-content>
     
-    <div class="tabs footer" ng-click="sortToiletByMode($event)">
+    <div class="tabs footer" ng-click="mta.sortToiletByMode($event)">
 
-      <a class="tab-item active" ng-class="{active: mode === 'FREE'}" data-mode="free">
-        <i class="icon ion-pricetag"></i>
-        Free
+      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.FREE)}">
+        <div class="mta-icon mta-icon-free" data-mode="{{mta.mode.FREE}}">Free</div>
       </a>
-      <a class="tab-item" ng-class="{active: mode === 'PAID'}" data-mode="paid">
-        <i class="icon ion-cash"></i>
-        Paid
+      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.PAID)}">
+        <div class="mta-icon mta-icon-paid" data-mode="{{mta.mode.PAID}}">Paid</div>
+      </a> 
+      <!-- <a class="tab-item" style="font-size: 2.45em">
+        <i class="ion-android-home"></i>
+      </a> -->
+      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.MALLS)}">
+        <div class="mta-icon mta-icon-shopping" data-mode="{{mta.mode.MALLS}}">Malls</div>
       </a>
-      <a class="tab-item" ng-class="{active: mode === 'MALLS'}" data-mode="shopping">
-        <i class="icon ion-bag"></i>
-        Malls
-      </a>
-      <a class="tab-item" ng-class="{active: mode === 'STATIONS'}" data-mode="gas">
-        <i class="icon ion-model-s"></i>
-        Gas Station
+      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.GAS_STAION)}">
+        <div class="mta-icon mta-icon-gas" data-mode="{{mta.mode.GAS_STAION}}">Gas</div>
       </a>
     </div>
 </ion-view>

@@ -13,7 +13,7 @@
     function LocationMapListView($scope, location, $ionicLoading) {
     	
 
-    	$scope.showLoader();
+    	$scope.mta.showLoader();
 
     }
 

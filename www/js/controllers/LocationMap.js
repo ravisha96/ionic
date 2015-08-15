@@ -8,13 +8,18 @@
         .module('myToiletApp')
         .controller('LocationMapCtrl', LocationMap);
 
-    LocationMap.$inject = ['$scope', 'LocationFactory', '$ionicLoading'];
+    LocationMap.$inject = ['$scope', 'LocationFactory', '$ionicLoading', 'Constants'];
 
-    function LocationMap($scope, location, $ionicLoading) {
+    function LocationMap($scope, location, $ionicLoading, constants) {
 
-    	var vm = this;
-
-    	$scope.showLoader = showLoader;
+        $scope.mta = {
+        	showLoader: showLoader,
+			sortToiletByMode: sortToiletByMode,
+            mode: constants.MODE,
+            view: constants.VIEW,
+            selectedView: null,
+			sortBy: null
+        };
 
 
         /**
@@ -29,6 +34,16 @@
                 maxWidth: 200,
                 showDelay: 1
             });
+        }
+
+        /**
+         * sortToiletByMode method sort the listed toilet based on the mode selected.
+         * @param  {Object} event [description]
+         * @return {[type]}       [description]
+         */
+        function sortToiletByMode(event) {
+        	$scope.mta.sortBy = event.target.dataset.mode;
+            $scope.$broadcast('sorted', event.target.dataset.mode);
         }
     }
 
