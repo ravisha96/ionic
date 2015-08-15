@@ -47,21 +47,17 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
             abstract: true,
             views: {
                 'menuContent': {
-                    // controller: 'LocationMapCtrl',
+                    controller: 'LocationMapCtrl',
                     templateUrl: 'templates/home.tpl.html'
                 }
-            },
-            resolve: {
-                CurrentLocation: ['LocationFactory', function (location) {
-                    return location.getCurrentLocation();
-                }]
             }
         })
 
         .state('app.home.maps', {
             url: '/maps',
-            controller: 'LocationMapCtrl',
-            templateUrl: 'templates/map.tpl.html'
+            controller: 'LocationMapViewCtrl',
+            templateUrl: 'templates/map.tpl.html',
+            controllerAs: 'vm'
         })
 
         .state('app.home.map', {
@@ -78,7 +74,7 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
 
         .state('app.home.maplist', {
             url: '/list',
-            controller: 'LocationMapCtrl',
+            controller: 'LocationMapListViewCtrl',
             templateUrl: 'templates/maplist.tpl.html'
         })
 

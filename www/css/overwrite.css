@@ -95,3 +95,7 @@ input::-webkit-input-placeholder,
 .scroll-content.ionic-scroll .scroll {
 	height: 100%;
 } 
+
+.loading-container .loading {
+	background: transparent;
+}

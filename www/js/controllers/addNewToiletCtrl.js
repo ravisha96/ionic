@@ -2,13 +2,13 @@
 
     angular
         .module('myToiletApp')
-        .controller('AddNewToiletCtrl', AddNewToiletCtrl);
+        .controller('AddNewToiletCtrl', AddNewToilet);
 
 
-    AddNewToiletCtrl.$inject = ['$scope', 'LocationFactory', '$http'];
+    AddNewToilet.$inject = ['$scope', 'LocationFactory', '$http'];
 
 
-    function AddNewToiletCtrl($scope, location, $http) {
+    function AddNewToilet($scope, location, $http) {
 
         $scope.location = {
             name: null

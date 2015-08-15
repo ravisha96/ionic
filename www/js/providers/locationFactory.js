@@ -10,7 +10,7 @@
     function Location($http, $q, $cordovaGeolocation) {
 
         var defaults = {
-            getCurrentLocation: GetCurrentLocation,
+            fetchCurrentLocation: GetCurrentLocation,
             reverseGeoCoding: ReverseGeoCoding,
             getAllLocations: GetAllLocations,
             getLocationByName: GetLocationByName,
@@ -19,6 +19,10 @@
             getSpecificAddressComponent: AddressComponentOfCurrentLocation,
             list: null,
             coordinate: null,
+            options: {
+                timeout: 10000,
+                enableHighAccuracy: true
+            },
             addressComponent: {
                 postalCode: 'postal_code',
                 country: 'country',
@@ -117,18 +121,18 @@
          */
         function GetCurrentLocation() {
 
-            // return $cordovaGeolocation.getCurrentPosition({timeout: 10000, enableHighAccuracy: false});
             var $defer = $.Deferred();
 
-            navigator.geolocation.getCurrentPosition(function(position) {
-                if (position.coords) {
-                    defaults.coordinate = position;
-                    $defer.resolve(position);
-                } else {
+            $cordovaGeolocation.getCurrentPosition(defaults.options).then(function(position) {
 
-                    $defer.reject('not able to fetch cordinates');
-                }
+                var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+                defaults.coordinate = latLng;
+
+                $defer.resolve(latLng);
+
+            }, function(error) {
+                $defer.reject(error);
             });
 
             return $defer.promise();
@@ -213,19 +217,19 @@
 
         /**
          * reverseGeoCoding terminology used to get the location details based on the longitude and latitude.
+         * @param {string} adress type.
          * @return {[type]} [description]
          */
         function ReverseGeoCoding(component) {
             var $defer = $.Deferred();
 
-            GetCurrentLocation().then(function(position) {
+            GetCurrentLocation().then(function(latLng) {
 
                 var infowindow = new google.maps.InfoWindow(),
-                    geocoder = new google.maps.Geocoder(),
-                    latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    geocoder = new google.maps.Geocoder();
 
                 geocoder.geocode({
-                    'latLng': latlng
+                    'latLng': latLng
                 }, function(results, status) {
                     var results = (component) ? AddressComponentOfCurrentLocation(results, status, component) : results;
                     $defer.resolve({results: results, status: status});
