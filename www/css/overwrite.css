@@ -40,6 +40,13 @@ input::-webkit-input-placeholder,
     border: 0px;
     color: #559fd3;
     background: #fdfefc;
+    border-radius: 5px 0px 0px 5px !important;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.45);
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+.map-toggle:last-child {
+	border-radius: 0 5px 5px 0px !important;
 }
 
 .map-toggle.icon-right:before {
@@ -73,7 +80,7 @@ input::-webkit-input-placeholder,
 }
 
 .item.item-complex .item-content {
-	padding: 2em 49px 3em 1.5em;
+	padding: 1.5em 49px 3em 1.5em;
 	font-size: 1.2em;
 }
 
@@ -90,10 +97,19 @@ input::-webkit-input-placeholder,
 .bg-605398 a{background: #605398 !important;}
 .bg-524364 a{background: #524364 !important;}
 
+.findAToilet .scroll-content {
+	height: calc(100% - 44px) !important;
+	overflow-y: scroll;
+}
+
+.map-list .scroll-content {
+	height: 100% !important;
+	overflow-y: scroll;
+}
 
 .scroll-content.ionic-scroll .left-menu .list,
 .scroll-content.ionic-scroll .scroll {
-	height: 100%;
+	height: calc(100% - 38px);
 } 
 
 .loading-container .loading {

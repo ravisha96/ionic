@@ -19,8 +19,8 @@
 9 verbose addTmpTarball E:\IONIC\MyToiletApp\ionic not in flight; adding
 10 verbose addTmpTarball validating metadata from E:\IONIC\MyToiletApp\ionic
 11 verbose tar unpack E:\IONIC\MyToiletApp\ionic
-12 verbose tar unpacking to C:\Users\ravisha\AppData\Local\Temp\npm-4452-bb9a4973\unpack-550881092b44
-13 verbose gentlyRm vacuuming C:\Users\ravisha\AppData\Local\Temp\npm-4452-bb9a4973\unpack-550881092b44
+12 verbose tar unpacking to C:\Users\ravisha\AppData\Local\Temp\npm-25512-f484de58\unpack-2e02cab31d74
+13 verbose gentlyRm vacuuming C:\Users\ravisha\AppData\Local\Temp\npm-25512-f484de58\unpack-2e02cab31d74
 14 silly gunzTarPerm modes [ '777', '666' ]
 15 error tar.unpack error reading E:\IONIC\MyToiletApp\ionic
 16 error addLocal Could not install E:\IONIC\MyToiletApp\ionic

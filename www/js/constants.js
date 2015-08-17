@@ -10,7 +10,7 @@
                 MALLS: 'SHOPPING'
             },
             VIEW: {
-                MAP: 'map',
+                MAP: 'maps',
                 LIST: 'list'
             }
         });

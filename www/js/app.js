@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'ngCordova', 'ionic-ratings'])
+angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'ngCordova', 'ionic-ratings', 'ngFileUpload'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -75,7 +75,8 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
         .state('app.home.maplist', {
             url: '/list',
             controller: 'LocationMapListViewCtrl',
-            templateUrl: 'templates/maplist.tpl.html'
+            templateUrl: 'templates/maplist.tpl.html',
+            controllerAs: 'vm'
         })
 
         .state('app.add', {
@@ -83,9 +84,10 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
             views: {
                 'menuContent': {
                     controller: 'AddNewToiletCtrl',
-                    templateUrl: 'templates/add.toilet.html'
+                    templateUrl: 'templates/add.toilet.html',
                 }
-            }
+            },
+            controllerAs: 'vm'
         })
 
         .state('app.search', {
@@ -105,7 +107,7 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
                 }
             }
         })
-            
+
         .state('app.playlists', {
             url: '/playlists',
             views: {

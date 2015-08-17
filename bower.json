@@ -10,6 +10,7 @@
     "fontawesome": "~4.3.0",
     "ngCordova": "~0.1.17-alpha",
     "lodash": "~3.9.3",
-    "ionic-ratings": "~0.1.0"
+    "ionic-ratings": "~0.1.0",
+    "ng-file-upload": "~6.2.1"
   }
 }

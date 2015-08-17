@@ -2,28 +2,7 @@
    <ion-content class="has-header" padding="true">
         <!-- google map -->
         <div class="spacer" style="width: 100%; height: 43%;">
-            <ui-gmap-google-map 
-                center="map.center" 
-                centered="true" 
-                ng-cloak 
-                zoom="map.zoom" 
-                draggable="true" 
-                options="map.options" 
-                idKey="map.id">
-                
-                 <ui-gmap-marker 
-                    coords="marker.coords" 
-                    options="marker.options" 
-                    idkey="marker.id">
-                </ui-gmap-marker>
-             
-                <ui-gmap-markers 
-                    models="map.markers" 
-                    coords="'coords'" 
-                    idKey="'id'">
-                </ui-gmap-markers> 
-                
-            </ui-gmap-google-map>
+            <div style="width: 100%; height: 100%;" class="google-map" data-tap-disabled="true" id="gmap"></div>
         </div>
 
         <button class="button button-block camera-click" ng-click="takePicture()">
@@ -36,27 +15,27 @@
         <form class="add-toilet-form">
             <div class="pad-10">
                 <label class="item auto-fill">
-                    <input type="text" placeholder="Auto Fill Address" ng-model="location.name">
+                    <input type="text" placeholder="Auto Fill Address" ng-model="toilet.name">
                 </label>
-                <ion-toggle class="toggle-toilet-type" name="Free" toggle-class="toggle-orange">Free</ion-toggle>
+                <ion-toggle class="toggle-toilet-type" name="Free" ng-model="toilet.mode" toggle-class="toggle-orange">Free</ion-toggle>
                 <div class="timing">
                     <span class="item">
                         Timing
                     </span>
-                    <input type="time" ng-model="location.openTime">
-                    <input type="time" ng-model="location.closeTime">
+                    <input type="time" ng-model="toilet.openTime">
+                    <input type="time" ng-model="toilet.closeTime">
                 </div>
                 <div class="rating">
                     <span class="item">
                         Rating
                     </span>
-                    <ionic-ratings ng-model="location.mode" ratingsobj='ratingsObject'></ionic-ratings>
+                    <ionic-ratings ng-model="toilet.mode" ratingsobj='ratingsObject'></ionic-ratings>
                 </div>
             </div>
-            <div class="action-btn">
-                <div class="btn button-cancel">Cancel</div>
-                <div class="btn button-submit" ng-click="addNewToilet()"> Add</div>
-            </div>
         </form>
+        <div class="action-btn">
+            <div class="btn button-cancel">Cancel</div>
+            <div class="btn button-submit" ng-click="addNewToilet()"> Add</div>
+        </div>
     </ion-content>
 </ion-view>

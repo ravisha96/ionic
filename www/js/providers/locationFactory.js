@@ -47,7 +47,7 @@
          * @return {Object} returns a defered object, the object consist of the nearest
          * ascending order
          */
-        function DistanceCalculator(origin, destinations, property) {
+        function DistanceCalculator(origin, destinations) {
 
             var property = property || [],
                 $defer = $.Deferred(),
@@ -55,8 +55,8 @@
             this.destinations = destinations;
 
             distance.getDistanceMatrix({
-                origins: ConvertLatLangToGoogleCoords(origin, _.first(property)),
-                destinations: ConvertLatLangToGoogleCoords(destinations, _.last(property)),
+                origins: ConvertLatLangToGoogleCoords(origin),
+                destinations: ConvertLatLangToGoogleCoords(destinations),
                 travelMode: google.maps.TravelMode.DRIVING,
                 unitSystem: google.maps.UnitSystem.METRIC,
                 avoidHighways: false,
@@ -76,7 +76,6 @@
                 } else {
                     $defer.reject(status);
                 }
-
                 callback(response, status, destinations)
             });
 
@@ -88,11 +87,19 @@
          * readeable lat/lng.
          * @return {object} Google Coordinates
          */
-        function ConvertLatLangToGoogleCoords(coordinate, key) {
+        function ConvertLatLangToGoogleCoords(coordinate) {
             var location = [];
             _.forEach(coordinate, function(coords) {
-                coords = (key) ? coords[key] : coords;
-                location.push(new google.maps.LatLng(parseFloat(coords.latitude), parseFloat(coords.longitude)));
+                
+                // Condition checks that coordinates are google map, or normal cordinates.
+                // If normal, retrive the google map version.
+                
+                if (coords.G && coords.K) {
+                    location.push(coords);
+                } else {
+
+                    location.push(new google.maps.LatLng(parseFloat(coords.position.latitude), parseFloat(coords.position.longitude)));
+                }
             });
 
             return location;

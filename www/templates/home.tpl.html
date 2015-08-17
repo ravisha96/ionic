@@ -6,6 +6,7 @@
                 <input type="search" ng-model="locationsearch" placeholder="Search alternative address" next-input>
             </label>
         </form>
+        {{mta.selectedView}}
         <div class="button-bar map-toggler">
             <a ui-sref="app.home.maps" 
               ng-class="{'activeBtn': (selectedView === mta.view.MAP || !selectedView)}" 
@@ -25,20 +26,20 @@
     
     <div class="tabs footer" ng-click="mta.sortToiletByMode($event)">
 
-      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.FREE)}">
-        <div class="mta-icon mta-icon-free" data-mode="{{mta.mode.FREE}}">Free</div>
+      <a class="tab-item mta-icon-free" ng-class="{'active': (mta.sortBy === mta.mode.FREE)}">
+        <div class="mta-icon" data-mode="{{mta.mode.FREE}}">Free</div>
       </a>
-      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.PAID)}">
-        <div class="mta-icon mta-icon-paid" data-mode="{{mta.mode.PAID}}">Paid</div>
+      <a class="tab-item mta-icon-paid" ng-class="{'active': (mta.sortBy === mta.mode.PAID)}">
+        <div class="mta-icon" data-mode="{{mta.mode.PAID}}">Paid</div>
       </a> 
       <!-- <a class="tab-item" style="font-size: 2.45em">
         <i class="ion-android-home"></i>
       </a> -->
-      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.MALLS)}">
-        <div class="mta-icon mta-icon-shopping" data-mode="{{mta.mode.MALLS}}">Malls</div>
+      <a class="tab-item mta-icon-shopping" ng-class="{'active': (mta.sortBy === mta.mode.MALLS)}">
+        <div class="mta-icon" data-mode="{{mta.mode.MALLS}}">Malls</div>
       </a>
-      <a class="tab-item" ng-class="{'active': (mta.sortBy === mta.mode.GAS_STAION)}">
-        <div class="mta-icon mta-icon-gas" data-mode="{{mta.mode.GAS_STAION}}">Gas</div>
+      <a class="tab-item mta-icon-gas" ng-class="{'active': (mta.sortBy === mta.mode.GAS_STAION)}">
+        <div class="mta-icon" data-mode="{{mta.mode.GAS_STAION}}">Gas</div>
       </a>
     </div>
 </ion-view>

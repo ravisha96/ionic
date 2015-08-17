@@ -43,6 +43,7 @@
 
             _.forEach(vm.markers, function(response) {
                 marker = new google.maps.Marker(_.extend(response, {
+                    
                     // Condition checks that coordinates are google map, or normal cordinates.
                     // If normal, retrive the google map version.
                     position: (!response.position.G && !response.position.K) ? new google.maps.LatLng(response.position.latitude, response.position.longitude) : response.position,

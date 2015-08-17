@@ -1,9 +1,9 @@
 <ion-view view-title="Find A Toilet" class="map-list">
   <ion-content>
     <ion-list class="capitalize toi-list">
-      <ion-item ng-repeat="location in map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ng-click="test($event, $index)">
+      <ion-item ng-repeat="location in vm.map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ng-click="test($event, $index)">
       	<figure class="toilet-type">
-      		<img src="img/icon-toilet-free.png" alt="">
+      		<img src="img/icon-toilet-{{location.mode}}.png" alt="">
       		<figcaption>
             <i class="ion-ios-star"></i>
             <i class="ion-ios-star"></i>
@@ -12,9 +12,9 @@
             <i class="ion-ios-star-outline"></i>
           </figcaption>
       	</figure>
-      	<article class="info">
+      	<article class="info ellipsis">
 	        <h3 class="toi-location-name ellipsis">{{location.name}}</h3>
-	        <div class="landmark ellipsis">{{location.address}}</div>
+	        <!-- <div class="landmark ellipsis c-355c7d ">{{location.address}}</div> -->
 	        <div class="distance ellipsis">
 	        	<i class="ion-ios-location"></i>
 	        	<span class="capitalize c-355c7d">{{location.driving.distance}}</span>
