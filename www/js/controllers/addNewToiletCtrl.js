@@ -5,10 +5,10 @@
         .controller('AddNewToiletCtrl', AddNewToiletCtrl);
 
 
-    AddNewToiletCtrl.$inject = ['$scope', 'LocationFactory', '$http', '$ionicLoading', 'Upload', '$cordovaCamera', '$cordovaFileTransfer'];
+    AddNewToiletCtrl.$inject = ['$scope', 'LocationFactory', '$http', '$ionicLoading', 'Upload', '$cordovaCamera', '$cordovaFileTransfer', '$ionicPopup'];
 
 
-    function AddNewToiletCtrl($scope, location, $http, $ionicLoading, upload, $cordovaCamera, $cordovaFileTransfer) {
+    function AddNewToiletCtrl($scope, location, $http, $ionicLoading, upload, $cordovaCamera, $cordovaFileTransfer, $ionicPopup) {
 
         var options = {
                 imageQuality: 20
@@ -24,7 +24,7 @@
             closeTime: null,
             rating: null,
             image: null,
-            mode: 'FREE'
+            mode: true
         };
 
         $scope.ratingsObject = {
@@ -39,52 +39,68 @@
             }
         };
 
+        /**
+         * addNewToilet method add
+         */
         function addNewToilet() {
+            noImageFound();
+            debugger;
             var options = new FileUploadOptions();
             options.fileKey = "file";
             options.quality = '30%';
-            options.fileName = $scope.toilet.image.substr($scope.toilet.image.lastIndexOf('/') + 1);
+            options.fileName = ($scope.toilet.image) ? $scope.toilet.image.substr($scope.toilet.image.lastIndexOf('/') + 1) : noImageFound();
             options.mimeType = "image/jpeg";
-            var params = new Object();
-            options.params = {
-                name: $scope.toilet.name,
-                openTime: $scope.toilet.openTime,
-                closeTime: $scope.toilet.closeTime,
-                mode: $scope.toilet.mode,
-                image: options.fileName,
-                address: $scope.toilet.address,
-                longitude: location.coordinate.lng(),
-                latitude: location.coordinate.lat(),
-                mode: $scope.toilet.mode,
-                dateCreated: new Date()
-            };
+            options.params = validate();
+
+            showLoader();
             options.chunkedMode = false;
             $cordovaFileTransfer.upload('http://www.findatoilet.in/admin/api/addLocation.php', $scope.toilet.image, options)
                 .then(function(result) {
+                    $ionicLoading.hide();
                     console.log(result);
                     // Success!
                 }, function(err) {
+                    $ionicLoading.hide();
                     console.log(err);
                     // Error
                 }, function(progress) {
+                    showLoader();
                     // constant progress updates
                 });
+        }
 
+        function noImageFound() {
+            var myPopup = $ionicPopup.show({
+                title: 'Upload camera picture',
+                subTitle: 'Verification purpose',
+                buttons: [{
+                    text: 'Cancel'
+                }, {
+                    text: '<b>Ok</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        takePicture();
+                    }
+                }, ]
+            });
+        }
 
-            // $http.post('http://www.findatoilet.in/admin/api/addLocation.php', {
-            //     name: $scope.toilet.name,
-            //     openTime: $scope.toilet.openTime,
-            //     closeTime: $scope.toilet.closeTime,
-            //     mode: $scope.toilet.mode,
-            //     image: $scope.toilet.image,
-            //     address: $scope.toilet.address,
-            //     longitude: location.coordinate.lng(),
-            //     latitude: location.coordinate.lat(),
-            //     mode: $scope.toilet.mode,
-            //     dateCreated: new Date()
-            // }).success(function(response) {
-            //     console.log(response);
-            // });
+        /**
+         * validate method validates the user entered fields.
+         * @return {[type]}          [description]
+         */
+        function validate() {
+            return {
+                name: ($scope.toilet.name) ? $scope.toilet.name : getCurrentLocationName(),
+                openTime: $scope.toilet.openTime, // Nullable
+                closeTime: $scope.toilet.closeTime, // Nullable
+                mode: ($scope.toilet.mode) ? 'PAID' : 'FREE',
+                rating: ($scope.toilet.rating) ? $scope.toilet.rating : 0,
+                address: ($scope.toilet.address) ? $scope.toilet.address : getCurrentLocationName(),
+                longitude: location.coordinate.lng(),
+                latitude: location.coordinate.lat(),
+                dateCreated: new Date()
+            };
         }
 
         /**
@@ -148,6 +164,7 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
+                getCurrentLocationName();
                 vm.map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
 
                 google.maps.event.addListenerOnce(vm.map, 'idle', function() {
@@ -193,7 +210,7 @@
             });
         };
 
-        google.maps.event.addDomListener(window, 'load', showMyLocationOnMap);
+        // google.maps.event.addDomListener(window, 'load', showMyLocationOnMap);
         showMyLocationOnMap();
 
     }
