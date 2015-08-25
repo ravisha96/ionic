@@ -1,5 +1,5 @@
 <!-- <ion-view view-title="Find A Toilet" class="map-list fullHW"> -->
-  <div class="addToilet">
+  <div class="map-list">
     <ion-list class="capitalize toi-list">
       <div class="emptyMsg" ng-show="!vm.hasData">No toilet found.</div>
       <ion-item ng-repeat="location in vm.map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ng-click="test($event, $index)">

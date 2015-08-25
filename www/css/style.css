@@ -72,7 +72,7 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 
 
 /******* ADD A TOILET *******/
-.addToilet {
+.map-list {
 	width: 100%;
 	height: calc(100% - 45px);
 	margin-top: 50px;
@@ -81,76 +81,76 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	overflow: scroll;
 }
 
-.addToilet figure,
-.addToilet article {
+.map-list figure,
+.map-list article {
 	display: inline-block;;
 	color: #8A8A8A;
 }
 
-.addToilet h3 {
+.map-list h3 {
 	color: #fb931e;
 	font-size: 1em;
 }
 
-.addToilet figure,
-.addToilet figcaption {
+.map-list figure,
+.map-list figcaption {
 	width: 2.6em;
 	text-align: center;
 	color: #fb931e;
 }
 
-.addToilet figcaption {
+.map-list figcaption {
 	margin-left: -11px;
 }
-.addToilet figcaption .ion-ios-star.disable {
+.map-list figcaption .ion-ios-star.disable {
 	color: #C3C1C1;
 }
 
-.addToilet figure img {
+.map-list figure img {
 	max-width: 100%;
 }
 
-.addToilet figcaption i {
+.map-list figcaption i {
 	font-size: 	15px;
 	margin-left: .03em;
 }
 
-.addToilet article {
+.map-list article {
 	margin-top: .5em;
 	margin-left: 2em;
     vertical-align: top;
     position: absolute;
 }
 
-.addToilet article * {
+.map-list article * {
 	height: 1.52em;
 	width: 90%;
 }
 
-.addToilet .space {
+.map-list .space {
 	width: 100%; 
 	height: 43%;
 }
 
-.addToilet .distance {
+.map-list .distance {
 	font-size: .9em;
 	color: #387BAB;
 }
 
-.addToilet .distance .ion-ios-location {
+.map-list .distance .ion-ios-location {
 	color: #FA931E;
 	margin-left: 1px;
 	font-size: 1.2em;
 }
 
-.addToilet .transportMode i:first-child {
+.map-list .transportMode i:first-child {
 	margin-left: 0;
 }
-.addToilet .transportMode i{
+.map-list .transportMode i{
 	margin-left: 2.5em;
 }
 
-.addToilet .transportMode span {
+.map-list .transportMode span {
 	font-size: .8em;
 	color: #387BAB;
 }
