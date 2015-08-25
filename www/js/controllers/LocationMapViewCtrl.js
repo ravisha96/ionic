@@ -8,15 +8,22 @@
         .module('myToiletApp')
         .controller('LocationMapViewCtrl', LocationMapView);
 
-    LocationMapView.$inject = ['$scope', 'LocationFactory', '$q', '$cordovaGeolocation', '$ionicLoading'];
+    LocationMapView.$inject = ['$scope', 'LocationFactory', '$q', '$cordovaGeolocation', '$ionicLoading', '$rootScope'];
 
-    function LocationMapView($scope, location, $q, $cordovaGeolocation, $ionicLoading) {
+    function LocationMapView($scope, location, $q, $cordovaGeolocation, $ionicLoading, $rootScope) {
 
         var vm = this;
         vm.markersOriginalCopy = [];
 
         $scope.$on('sorted', sortToiletItem);
+        var searchClicked = $rootScope.$on('searchClicked', function() {
+            // Also check for user last location is updated and also update the map.
+            showMyLocationOnMap(drawSearchedLocation);
+        });
 
+        $scope.$on('$destroy', function () {
+            searchClicked();
+        });
 
         function deleteMarkers() {
             _.forEach(vm.markers, function(marker) {
@@ -43,7 +50,7 @@
 
             _.forEach(vm.markers, function(response) {
                 marker = new google.maps.Marker(_.extend(response, {
-                    
+
                     // Condition checks that coordinates are google map, or normal cordinates.
                     // If normal, retrive the google map version.
                     position: (!response.position.G && !response.position.K) ? new google.maps.LatLng(response.position.latitude, response.position.longitude) : response.position,
@@ -74,18 +81,31 @@
                 markers.push(marker);
             });
 
-    
+
             vm.markers = markers;
             vm.map.fitBounds(bounds);
             $ionicLoading.hide();
         }
 
         /**
+         * searchLocations method make a server query and search all stored location.
+         * @return {[type]} [description]
+         */
+        function drawSearchedLocation() {
+
+            location.getAllLocations($scope.locationsearch).then(function(response) {
+                vm.markersOriginalCopy = vm.markers = response.data;
+                drawAllMarkers();
+            });
+        }
+
+
+        /**
          * showMyLocationOnMap method create the marker based on the current location of the user.
          * 'idle' event for the google map to get initialized and then draw the marker.
          * @return {[type]} [description]
          */
-        function showMyLocationOnMap() {
+        function showMyLocationOnMap(callback) {
             $scope.mta.showLoader();
             location.fetchCurrentLocation().then(function(latLng) {
 
@@ -105,7 +125,10 @@
                     });
 
                     vm.userCurrentLocation = marker;
-                    searchNearByToilets();
+
+                    if (callback.constructor === Function) {
+                        callback();
+                    }
                 });
 
             }, function(error) {
@@ -239,8 +262,17 @@
         }
 
 
+        $rootScope.$on('onResumeCordova', function(event) {
+            alert('resume');
+        });
+
+        // System events
+        document.addEventListener('resume', function() {
+            alert('resume');
+        }, false);
+
         // google.maps.event.addDomListener(window, 'load', showMyLocationOnMap);
-        showMyLocationOnMap();
+        showMyLocationOnMap(searchNearByToilets);
         $scope.mta.showLoader();
 
     }

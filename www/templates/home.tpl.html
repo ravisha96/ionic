@@ -1,12 +1,14 @@
 <ion-view view-title="Find A Toilet" class="findAToilet">
-    <ion-content>
-        <form class="searchInput">
-            <label class="item item-input" name="search-toilet">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" ng-model="locationsearch" placeholder="Search alternative address" next-input>
-            </label>
-        </form>
-        {{mta.selectedView}}
+<div class="inner-container">
+    <!-- <ion-content> -->
+        <div class="searchInput">
+          <form>
+              <label class="item item-input" name="search-toilet">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="search" ng-model="locationsearch" placeholder="Search alternative address" next-input>
+              </label>
+          </form>
+        </div>
         <div class="button-bar map-toggler">
             <a ui-sref="app.home.maps" 
               ng-class="{'activeBtn': (selectedView === mta.view.MAP || !selectedView)}" 
@@ -20,9 +22,9 @@
         </div>
         
   
-        <div ui-view="" class="full-height"></div>
+        <div ui-view="" class="fullHeight"></div>
 
-    </ion-content>
+    <!-- </ion-content> -->
     
     <div class="tabs footer" ng-click="mta.sortToiletByMode($event)">
 
@@ -42,4 +44,5 @@
         <div class="mta-icon" data-mode="{{mta.mode.GAS_STAION}}">Gas</div>
       </a>
     </div>
+</div>
 </ion-view>

@@ -80,8 +80,9 @@ input::-webkit-input-placeholder,
 }
 
 .item.item-complex .item-content {
-	padding: 1.5em 49px 3em 1.5em;
-	font-size: 1.2em;
+    font-size: 1.2em;
+    height: 90%;
+    padding: 10%;
 }
 
 .item.item-complex .item-content i {
@@ -98,8 +99,8 @@ input::-webkit-input-placeholder,
 .bg-524364 a{background: #524364 !important;}
 
 .findAToilet .scroll-content {
-	height: calc(100% - 44px) !important;
-	overflow-y: scroll;
+/*	height: calc(100% - 44px) !important;
+	overflow-y: scroll;*/
 }
 
 .map-list .scroll-content {
@@ -109,7 +110,8 @@ input::-webkit-input-placeholder,
 
 .scroll-content.ionic-scroll .left-menu .list,
 .scroll-content.ionic-scroll .scroll {
-	height: calc(100% - 38px);
+/*	height: calc(100% - 44px);
+	margin-top: 44px;*/
 } 
 
 .loading-container .loading {

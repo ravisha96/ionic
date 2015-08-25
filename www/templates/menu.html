@@ -11,7 +11,7 @@
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" class="side-menu">
     <ion-content>
       <ion-list class="left-menu full-height">
         <ion-item menu-close ui-sref="app.home.maps" class="bg-3F96D9">
@@ -20,16 +20,19 @@
         <ion-item menu-close ui-sref="app.add" class="bg-3A86C1">
            <i class="ion-ios-person-outline"></i> Add A Toilet
         </ion-item>
-      <ion-item menu-close ui-sref="app" ng-click="login()" class="bg-2A94BC">
+        <ion-item menu-close ui-sref="app.review" class="bg-2A94BC">
+           <i class="ion-ios-person-outline"></i> Review A Toilet
+        </ion-item>
+      <ion-item menu-close ui-sref="app" ng-click="login()" class="bg-4EACD0">
           <i class="ion-ios-person-outline"></i> FAQ's
         </ion-item>
-        <ion-item menu-close class="bg-4EACD0" ui-sref="app.addmap">
+        <ion-item menu-close class="bg-4A7EB8" ui-sref="app.addmap">
           <i class="ion-ios-star-outline"></i> Rate the App
         </ion-item>
-        <ion-item menu-close href="#/app/search" class="bg-4A7EB8">
+        <ion-item menu-close href="#/app/search" class="bg-605398">
           <i class="ion-ios-chatboxes-outline"></i> Feedback
         </ion-item>
-        <ion-item menu-close href="#/app/search" class="bg-605398">
+        <ion-item menu-close href="#/app/search" class="bg-524364">
           <i class="ion-ios-paper-outline"></i> Terms &amp; Condition
         </ion-item>
         <ion-item menu-close href="#/app/search" class="bg-524364">

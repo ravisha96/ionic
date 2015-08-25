@@ -1,29 +1,96 @@
+/* Empty. Add your own CSS if you like */
+
 /*************** GLOBAL ***************/
 html, body, .container {
 	height: 100%;
 	width: 100%;
 }
 
-.inner-container {
-    width: 100%;
-    height: calc(100% - 95px);
-    margin-top: 45px;
+.spacer-10 {
+	margin-top: 10px;
 }
 
-.fullHW {
-	width: 100%;
-	height: 100%;
+.pad-10 {
+	padding: 10px;
 }
 
-.emptyMsg {
-	text-align: center;
-    width: 70%;
-    color: #3B81B3;
-    margin: 0 auto;
-    margin-top: 60%;
-    height: 50px;
-    line-height: 50px;
-    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.1);
+.full-height {
+    height: calc(100% - 45px);
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.google-map { 
+	height: 100%; 
+}
+
+.findAToilet .scroll .map {
+	height: 81%;
+}
+
+/*.addAToilet .angular-google-map-container { height: 200px; }*/
+.addAToilet .gmap {
+	position: relative;
+}
+
+.addAToilet .scroll {
+	calc(100% - 47px)
+}
+
+.addAToilet .gmap .camera{
+	width: 40px;
+	height: 40px;
+	background: rgb(215, 215, 215);
+	position: absolute;
+	z-index: 1;
+	right: 10px;
+	top: 10px;
+	border-radius: 4px;
+	opacity: 0.4;
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.addAToilet .gmap .camera i {
+	margin-left: 5px;
+	line-height: 40px;
+}
+
+.addAToilet .scrollable-container {
+	height: 160px;
+}
+
+.addAToilet .scrollable-container .scrollable {
+	height: 168px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.gm-style-mtc,
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2_hdpi.png"],
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2_hdpi.png"],
+a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
+	display:none
+}
+
+.toi-icon {
+	float: right;
+	display: inline-block;
+}
+
+.toi-location-name {
+	display: inline-block;	
+	width: 250px;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.map-container {
+	height: 100%; width: 100%; position: relative;
 }
 
 .ellipsis {
@@ -36,125 +103,211 @@ html, body, .container {
 }
 
 
-/******* SIDE MEU *******/
-.map-view gmap {
-	width: 100%;
-	height: 100%;
+
+/************ COLOR CODE ***********/
+.c-355c7d {
+	color: #355c7d;
 }
 
-/****** GOOGLE MAP ******/
-.gm-style-mtc,
-.gmnoprint,
-img[src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2_hdpi.png"],
-img[src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2_hdpi.png"],
-a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
-	display:none
-}
+.bg-3F96D9 {background: #3F96D9 !important;}
+.bg-3A86C1 {background: #3A86C1 !important;}
+.bg-2A94BC {background: #2A94BC !important;}
+.bg-4EACD0 {background: #4EACD0 !important;}
+.bg-4A7EB8 {background: #4A7EB8 !important;}
+.bg-605398 {background: #605398 !important;}
+.bg-524364 {background: #524364 !important;}
+
+/************ COLOR CODE ***********/
 
 
-/******* FIND A TOILET *******/
-.findAToilet .fullHeight {
-	width: 100%;
-	height: calc(100% - 45px);
+
+/************ LEFT MENU ***********/
+.left-menu {
+	color: #fff;
 }
 
-.findAToilet .fullHeight #gmap {
-	width: 100%;
-	height: 100%;
+/************ LEFT MENU ***********/
+
+
+
+
+
+
+/************ MAP ******************/
+
+/*.searchInput {
+	margin-top: 40px;
+}*/
+
+.gmnoprint {
+	display: none;
 }
+
+/************ MAP ******************/
+
+
+
+
+/************ MAP LIST *************/
 
 .map-list {
-
+	margin-top: 110px;
+	height: calc(100% - 110px);
 }
 
-/******* FIND A TOILET *******/
-
-
-
-/******* ADD A TOILET *******/
-.addToilet {
+.map-list .location{
 	width: 100%;
-	height: calc(100% - 45px);
-	margin-top: 50px;
-	background: #F7F6F6;
-	color: #8A8A8A;
-	overflow: scroll;
-}
-
-.addToilet figure,
-.addToilet article {
-	display: inline-block;;
-	color: #8A8A8A;
-}
-
-.addToilet h3 {
-	color: #fb931e;
 	font-size: 1em;
 }
 
-.addToilet figure,
-.addToilet figcaption {
-	width: 2.6em;
+.location.item {
+	border-bottom: 2px solid rgba(204, 204, 204, 0.64);
+}
+
+.map-list .toilet-type {
+	display: inline-block;
+	width: 40px;
+	vertical-align: top;
+}
+
+.toilet-type img{
+    max-width: 100%;
+    margin-bottom: .1em;
+    margin-left: 5px;
+}
+
+.map-list .toilet-type figcaption {
 	text-align: center;
-	color: #fb931e;
-}
-
-.addToilet figcaption {
-	margin-left: -11px;
-}
-.addToilet figcaption .ion-ios-star.disable {
-	color: #C3C1C1;
-}
-
-.addToilet figure img {
-	max-width: 100%;
-}
-
-.addToilet figcaption i {
-	font-size: 	15px;
-	margin-left: .03em;
-}
-
-.addToilet article {
-	margin-top: .5em;
-	margin-left: 2em;
-    vertical-align: top;
-    position: absolute;
-}
-
-.addToilet article * {
-	height: 1.52em;
-	width: 90%;
-}
-
-.addToilet .space {
-	width: 100%; 
-	height: 43%;
-}
-
-.addToilet .distance {
-	font-size: .9em;
-	color: #387BAB;
-}
-
-.addToilet .distance .ion-ios-location {
-	color: #FA931E;
-	margin-left: 1px;
 	font-size: 1.2em;
+    color: #fb931e;
+    margin-left: -11px;
 }
 
-.addToilet .transportMode i:first-child {
-	margin-left: 0;
-}
-.addToilet .transportMode i{
-	margin-left: 2.5em;
+.map-list .toilet-type figcaption i {font-size: 14px; margin-left: .1em;}
+
+.map-list h3 {
+	font-family: 'Roboto';
+	color: #fb931e;
+	font-size: 1em;
+	margin: 0;
 }
 
-.addToilet .transportMode span {
-	font-size: .8em;
-	color: #387BAB;
+.map-list .landmark {
+	text-transform: capitalize;
 }
-/*
+
+.map-list .info {
+	display: inline-block;
+	width: calc(80% - 10%);
+	float: right;
+}
+
+.map-list .distance i{
+	color: #fb931e;
+	font-size: 1.2em; 
+}
+
+.map-list .transport-mode{
+	font-size: 1.8em;
+	margin-top: .2em;
+	color: #355c7d;
+}
+
+.map-list .transport-mode span{
+    font-size: 0.5em;
+    margin-right: calc(35% - 4.8em);
+}
+
+.map-list .transport-mode i {
+	vertical-align: middle;
+}
+
+/************ MAP LIST *************/
+
+
+/****** GOOGLE MAP INFO WINDOW ****/
+.gm-style-iw {
+	width: 270px !important;
+	top: 20px !important;
+	left: 9px !important;
+	background: #48b5e9;
+	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	border: 1px solid rgba(72, 181, 233, 0.6);
+	height: 35px;
+	border-radius: 10px;
+}
+#iw-container {
+	margin-bottom: 10px;
+}
+#iw-container .iw-title {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 17px;
+	font-weight: 400;
+	padding: 8px;
+	background-color: #48b5e9;
+	color: white;
+	margin: 0;
+	width: 270px;
+}
+
+.gm-style .gm-style-iw img {
+	right: 10px;	
+}
+
+.iw-subTitle {
+	font-size: 16px;
+	font-weight: 700;
+	padding: 5px 0;
+}
+
+.iw-title .location-name {
+	width: 230px;
+}
+
+.redirect-to-gmap {
+	position: absolute;
+    left: 250px;
+    top: 7px;
+    font-size: 22px;
+}
+
+.iw-arrow div:first-child,
+.iw-arrow div:nth-child(2) {
+	height: 18px !important;
+}
+
+.iw-arrow div:first-child div {transform: skewX(26.6deg) !important;}
+.iw-arrow div:nth-child(2) div {transform: skewX(-26.6deg) !important;}
+.iw-close-btn {
+    right: 8px !important;
+    top: 9px!important;
+    border-radius: 13px!important;
+    box-shadow: 0px 0px 0px 5px rgb(72, 181, 233)!important
+}
+
+.iw-close-btn:after {
+	content: 'x';
+}
+
+.iw-bottom-gradient {
+	/*position: absolute;
+	width: 326px;
+	height: 25px;
+	bottom: 10px;
+	right: 18px;
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);*/
+}
+
+/******* GOOGLE MAP INFO WINDOW *******/
+
+
+
+/************ ADD A TOILET *************/
+.addToilet {background: #F7F6F6;}
+.addToilet .scroll-content {height: calc(100% - 43px);}
 .addToilet .scroll.padding {
 	height: 100% !important;
 	position: relative;
@@ -197,7 +350,6 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 .addToilet .item {
 	background: none;
 	color: #3179AE;
-	border-bottom: 1px solid rgba(204, 204, 204, 0.61);
 }
 
 .addToilet .padding {
@@ -336,13 +488,34 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
 	left: 85px;
 	display: inline-block;
 	width: 45px;
-}*/
+}
+
+/************ ADD A TOILET *************/
 
 
-/******* ADD A TOILET *******/
 
 
+/************ REVIEW A TOILET *************/
 
+.toi-review-direction {
+	height: 10%; 
+	width: 100%;
+}
+
+.toi-review-direction figure {
+	height: 100%;
+	color: #3A80B3;
+	display: inline-block;
+}
+.toi-review-direction img {max-height: 100%;}
+
+.toi-review .add-toilet-form {
+	height: 40%;
+	margin-top: 5%;
+}
+
+
+/************ REVIEW A TOILET *************/
 
 
 /************ FOOTER *************/
@@ -426,4 +599,6 @@ a[href="https://www.google.com/intl/en-US_US/help/terms_maps.html"]{
     background-position-x: 50%;
     background-position-y: 65%;
 }
+
+
 /************ FOOTER *************/

@@ -90,6 +90,17 @@ angular.module('myToiletApp', ['ionic', 'starter.controllers', 'uiGmapgoogle-map
             controllerAs: 'vm'
         })
 
+        .state('app.review', {
+            url: '/toiletreview',
+            views: {
+                'menuContent': {
+                    controller: 'ToiletReviewCtrl',
+                    templateUrl: 'templates/toilet.review.html',
+                }
+            },
+            controllerAs: 'vm'
+        })
+
         .state('app.search', {
             url: '/search',
             views: {

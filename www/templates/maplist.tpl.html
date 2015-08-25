@@ -1,15 +1,13 @@
-<ion-view view-title="Find A Toilet" class="map-list">
-  <ion-content>
+<!-- <ion-view view-title="Find A Toilet" class="map-list fullHW"> -->
+  <div class="addToilet">
     <ion-list class="capitalize toi-list">
+      <div class="emptyMsg" ng-show="!vm.hasData">No toilet found.</div>
       <ion-item ng-repeat="location in vm.map.markers | filter:locationsearch | orderBy: ['driving.distance', 'driving.duration']" class="location" ng-click="test($event, $index)">
       	<figure class="toilet-type">
       		<img src="img/icon-toilet-{{location.mode}}.png" alt="">
       		<figcaption>
-            <i class="ion-ios-star"></i>
-            <i class="ion-ios-star"></i>
-            <i class="ion-ios-star-half"></i>
-            <i class="ion-ios-star-outline"></i>
-            <i class="ion-ios-star-outline"></i>
+            <i class="ion-ios-star" ng-repeat="selected in vm.getArrayOfRating(location.rating)"></i>
+            <i class="ion-ios-star disable" ng-repeat="nonSelected in vm.getArrayOfRating(location.rating, 5)"></i>
           </figcaption>
       	</figure>
       	<article class="info ellipsis">
@@ -19,9 +17,7 @@
 	        	<i class="ion-ios-location"></i>
 	        	<span class="capitalize c-355c7d">{{location.driving.distance}}</span>
 	        </div>
-	        <div class="transport-mode">
-	        	<i class="ion-android-bus"></i>
-	        	<span>{{location.time.bus}}</span>
+	        <div class="transportMode">
 	        	<i class="ion-model-s"></i>
 	        	<span>{{location.driving.duration}}</span>
 	        	<i class="ion-android-walk"></i>
@@ -30,5 +26,5 @@
       	</article>
       </ion-item>
     </ion-list>
-  </ion-content>
-</ion-view>
+  </div>
+<!-- </ion-view> -->
